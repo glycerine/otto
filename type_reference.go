@@ -10,20 +10,22 @@ type _reference interface {
 // PropertyReference
 
 type _propertyReference struct {
-	name    string
-	strict  bool
-	base    *_object
-	runtime *_runtime
-	at      _at
+	name     string
+	strict   bool
+	base     *_object
+	runtime  *_runtime
+	at       _at
+	isSymbol bool
 }
 
-func newPropertyReference(rt *_runtime, base *_object, name string, strict bool, at _at) *_propertyReference {
+func newPropertyReference(rt *_runtime, base *_object, name string, strict bool, at _at, isSymbol bool) *_propertyReference {
 	return &_propertyReference{
-		runtime: rt,
-		name:    name,
-		strict:  strict,
-		base:    base,
-		at:      at,
+		runtime:  rt,
+		name:     name,
+		strict:   strict,
+		base:     base,
+		at:       at,
+		isSymbol: isSymbol,
 	}
 }
 
@@ -60,7 +62,7 @@ func newArgumentReference(runtime *_runtime, base *_object, name string, strict 
 	if base == nil {
 		panic(hereBeDragons())
 	}
-	return newPropertyReference(runtime, base, name, strict, at)
+	return newPropertyReference(runtime, base, name, strict, at, false)
 }
 
 type _stashReference struct {
@@ -94,7 +96,7 @@ func (self *_stashReference) delete() bool {
 
 func getIdentifierReference(runtime *_runtime, stash _stash, name string, strict bool, at _at) _reference {
 	if stash == nil {
-		return newPropertyReference(runtime, nil, name, strict, at)
+		return newPropertyReference(runtime, nil, name, strict, at, false)
 	}
 	if stash.hasBinding(name) {
 		return stash.newReference(name, strict, at)

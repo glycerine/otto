@@ -15,39 +15,61 @@ import (
 )
 
 type _global struct {
-	Object         *_object // Object( ... ), new Object( ... ) - 1 (length)
-	Function       *_object // Function( ... ), new Function( ... ) - 1
-	Array          *_object // Array( ... ), new Array( ... ) - 1
-	String         *_object // String( ... ), new String( ... ) - 1
-	Boolean        *_object // Boolean( ... ), new Boolean( ... ) - 1
-	Number         *_object // Number( ... ), new Number( ... ) - 1
-	Math           *_object
-	Date           *_object // Date( ... ), new Date( ... ) - 7
-	RegExp         *_object // RegExp( ... ), new RegExp( ... ) - 2
-	Error          *_object // Error( ... ), new Error( ... ) - 1
-	EvalError      *_object
-	TypeError      *_object
-	RangeError     *_object
-	ReferenceError *_object
-	SyntaxError    *_object
-	URIError       *_object
-	JSON           *_object
+	Object            *_object // Object( ... ), new Object( ... ) - 1 (length)
+	Function          *_object // Function( ... ), new Function( ... ) - 1
+	Array             *_object // Array( ... ), new Array( ... ) - 1
+	String            *_object // String( ... ), new String( ... ) - 1
+	Boolean           *_object // Boolean( ... ), new Boolean( ... ) - 1
+	Number            *_object // Number( ... ), new Number( ... ) - 1
+	Math              *_object
+	Date              *_object // Date( ... ), new Date( ... ) - 7
+	RegExp            *_object // RegExp( ... ), new RegExp( ... ) - 2
+	Error             *_object // Error( ... ), new Error( ... ) - 1
+	EvalError         *_object
+	TypeError         *_object
+	RangeError        *_object
+	ReferenceError    *_object
+	SyntaxError       *_object
+	URIError          *_object
+	JSON              *_object
+	ArrayBuffer       *_object
+	Int8Array         *_object
+	Int16Array        *_object
+	Int32Array        *_object
+	Uint8Array        *_object
+	Uint8ClampedArray *_object
+	Uint16Array       *_object
+	Uint32Array       *_object
+	Float32Array      *_object
+	Float64Array      *_object
+	Symbol            *_object
 
-	ObjectPrototype         *_object // Object.prototype
-	FunctionPrototype       *_object // Function.prototype
-	ArrayPrototype          *_object // Array.prototype
-	StringPrototype         *_object // String.prototype
-	BooleanPrototype        *_object // Boolean.prototype
-	NumberPrototype         *_object // Number.prototype
-	DatePrototype           *_object // Date.prototype
-	RegExpPrototype         *_object // RegExp.prototype
-	ErrorPrototype          *_object // Error.prototype
-	EvalErrorPrototype      *_object
-	TypeErrorPrototype      *_object
-	RangeErrorPrototype     *_object
-	ReferenceErrorPrototype *_object
-	SyntaxErrorPrototype    *_object
-	URIErrorPrototype       *_object
+	ObjectPrototype            *_object // Object.prototype
+	FunctionPrototype          *_object // Function.prototype
+	ArrayPrototype             *_object // Array.prototype
+	StringPrototype            *_object // String.prototype
+	BooleanPrototype           *_object // Boolean.prototype
+	NumberPrototype            *_object // Number.prototype
+	DatePrototype              *_object // Date.prototype
+	RegExpPrototype            *_object // RegExp.prototype
+	ErrorPrototype             *_object // Error.prototype
+	EvalErrorPrototype         *_object
+	TypeErrorPrototype         *_object
+	RangeErrorPrototype        *_object
+	ReferenceErrorPrototype    *_object
+	SyntaxErrorPrototype       *_object
+	URIErrorPrototype          *_object
+	ArrayBufferPrototype       *_object
+	Int8ArrayPrototype         *_object
+	Int16ArrayPrototype        *_object
+	Int32ArrayPrototype        *_object
+	Uint8ArrayPrototype        *_object
+	Uint8ClampedArrayPrototype *_object
+	Uint16ArrayPrototype       *_object
+	Uint32ArrayPrototype       *_object
+	Float32ArrayPrototype      *_object
+	Float64ArrayPrototype      *_object
+	SymbolPrototype            *_object
 }
 
 type _runtime struct {
@@ -62,8 +84,9 @@ type _runtime struct {
 	stackLimit   int
 	traceLimit   int
 
-	labels []string // FIXME
-	lck    sync.Mutex
+	symbolRegistry map[string]_symbol
+	labels         []string // FIXME
+	lck            sync.Mutex
 }
 
 func (self *_runtime) enterScope(scope *_scope) {
@@ -153,6 +176,8 @@ func (self *_runtime) toObject(value Value) *_object {
 		return self.newString(value)
 	case valueNumber:
 		return self.newNumber(value)
+	case valueSymbol:
+		return self.newSymbol(value)
 	case valueObject:
 		return value._object()
 	}
@@ -171,6 +196,8 @@ func (self *_runtime) objectCoerce(value Value) (*_object, error) {
 		return self.newString(value), nil
 	case valueNumber:
 		return self.newNumber(value), nil
+	case valueSymbol:
+		return self.newSymbol(value), nil
 	case valueObject:
 		return value._object(), nil
 	}

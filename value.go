@@ -16,6 +16,7 @@ const (
 	valueNumber
 	valueString
 	valueBoolean
+	valueSymbol
 	valueObject
 
 	// These are invalid outside of the runtime
@@ -196,6 +197,22 @@ func (value Value) IsFunction() bool {
 	return value.value.(*_object).class == "Function"
 }
 
+// IsTypedArray will return true if value is a typed array
+func (value Value) IsTypedArray() bool {
+	if value.kind != valueObject {
+		return false
+	}
+	return isTypedArray(value.value.(*_object))
+}
+
+// IsSymbol will return true if value is a symbol
+func (value Value) IsSymbol() bool {
+	if value.kind != valueObject {
+		return false
+	}
+	return value.value.(*_object).class == "Symbol"
+}
+
 // Class will return the class string of the value or the empty string if value is not an object.
 //
 // The return value will (generally) be one of:
@@ -263,6 +280,13 @@ func (value Value) isError() bool {
 		return false
 	}
 	return value.value.(*_object).class == "Error"
+}
+
+func (value Value) isArrayBuffer() bool {
+	if value.kind != valueObject {
+		return false
+	}
+	return value.value.(*_object).class == "ArrayBuffer"
 }
 
 // ---
@@ -466,6 +490,14 @@ func (value Value) _object() *_object {
 		return value
 	}
 	return nil
+}
+
+func (value Value) _symbol() _symbol {
+	switch value := value.value.(type) {
+	case _symbol:
+		return value
+	}
+	return _symbol{}
 }
 
 // Object will return the object of the value, or nil if value is not an object.

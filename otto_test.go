@@ -1525,6 +1525,17 @@ func TestOttoContext(t *testing.T) {
 		"String",
 		"isFinite",
 		"undefined",
+		"ArrayBuffer",
+		"Int8Array",
+		"Int16Array",
+		"Int32Array",
+		"Uint8Array",
+		"Uint8ClampedArray",
+		"Uint16Array",
+		"Uint32Array",
+		"Float32Array",
+		"Float64Array",
+		"Symbol",
 	}
 
 	tt(t, func() {

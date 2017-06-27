@@ -177,7 +177,7 @@ func (self *_runtime) cmpl_evaluate_nodeBracketExpression(node *_nodeBracketExpr
 	if err != nil {
 		panic(self.panicTypeError("Cannot access member '%s' of %s", memberValue.string(), err.Error(), _at(node.idx)))
 	}
-	return toValue(newPropertyReference(self, object, memberValue.string(), false, _at(node.idx)))
+	return toValue(newPropertyReference(self, object, memberValue.string(), false, _at(node.idx), memberValue.IsSymbol()))
 }
 
 func (self *_runtime) cmpl_evaluate_nodeCallExpression(node *_nodeCallExpression, withArgumentList []interface{}) Value {
@@ -261,7 +261,7 @@ func (self *_runtime) cmpl_evaluate_nodeDotExpression(node *_nodeDotExpression) 
 	if err != nil {
 		panic(self.panicTypeError("Cannot access member '%s' of %s", node.identifier, err.Error(), _at(node.idx)))
 	}
-	return toValue(newPropertyReference(self, object, node.identifier, false, _at(node.idx)))
+	return toValue(newPropertyReference(self, object, node.identifier, false, _at(node.idx), false))
 }
 
 func (self *_runtime) cmpl_evaluate_nodeNewExpression(node *_nodeNewExpression) Value {

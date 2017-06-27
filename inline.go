@@ -1337,6 +1337,190 @@ func _newContext(runtime *_runtime) {
 				call: builtinArray_reduceRight,
 			},
 		}
+		copyWithin_function := &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 2,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+			},
+			value: _nativeFunctionObject{
+				name: "copyWithin",
+				call: builtinArray_copyWithin,
+			},
+		}
+		entries_function := &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 0,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+			},
+			value: _nativeFunctionObject{
+				name: "entries",
+				call: builtinArray_entries,
+			},
+		}
+		fill_function := &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 1,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+			},
+			value: _nativeFunctionObject{
+				name: "fill",
+				call: builtinArray_fill,
+			},
+		}
+		find_function := &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 1,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+			},
+			value: _nativeFunctionObject{
+				name: "find",
+				call: builtinArray_find,
+			},
+		}
+		findIndex_function := &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 1,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+			},
+			value: _nativeFunctionObject{
+				name: "findIndex",
+				call: builtinArray_findIndex,
+			},
+		}
+		includes_function := &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 1,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+			},
+			value: _nativeFunctionObject{
+				name: "includes",
+				call: builtinArray_includes,
+			},
+		}
+		keys_function := &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 0,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+			},
+			value: _nativeFunctionObject{
+				name: "keys",
+				call: builtinArray_keys,
+			},
+		}
+		values_function := &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 0,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+			},
+			value: _nativeFunctionObject{
+				name: "values",
+				call: builtinArray_values,
+			},
+		}
 		isArray_function := &_object{
 			runtime:     runtime,
 			class:       "Function",
@@ -1522,6 +1706,62 @@ func _newContext(runtime *_runtime) {
 						value: reduceRight_function,
 					},
 				},
+				"copyWithin": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: copyWithin_function,
+					},
+				},
+				"entries": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: entries_function,
+					},
+				},
+				"fill": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: fill_function,
+					},
+				},
+				"find": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: find_function,
+					},
+				},
+				"findIndex": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: findIndex_function,
+					},
+				},
+				"includes": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: includes_function,
+					},
+				},
+				"keys": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: keys_function,
+					},
+				},
+				"values": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: values_function,
+					},
+				},
 			},
 			propertyOrder: []string{
 				"length",
@@ -1546,6 +1786,14 @@ func _newContext(runtime *_runtime) {
 				"filter",
 				"reduce",
 				"reduceRight",
+				"copyWithin",
+				"entries",
+				"fill",
+				"find",
+				"findIndex",
+				"includes",
+				"keys",
+				"values",
 			},
 		}
 		runtime.global.Array = &_object{
@@ -5703,6 +5951,3377 @@ func _newContext(runtime *_runtime) {
 		}
 	}
 	{
+		slice_function := &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 2,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+			},
+			value: _nativeFunctionObject{
+				name: "slice",
+				call: builtinArrayBuffer_slice,
+			},
+		}
+		isView_function := &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 1,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+			},
+			value: _nativeFunctionObject{
+				name: "isView",
+				call: builtinArrayBuffer_isView,
+			},
+		}
+		runtime.global.ArrayBufferPrototype = &_object{
+			runtime:     runtime,
+			class:       "ArrayBuffer",
+			objectClass: _classObject,
+			prototype:   runtime.global.ArrayBufferPrototype,
+			extensible:  true,
+			value:       nil,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0100,
+					value: Value{
+						kind:  valueNumber,
+						value: uint32(1),
+					},
+				},
+				"slice": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: slice_function,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+				"slice",
+			},
+		}
+		runtime.global.ArrayBuffer = &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			value: _nativeFunctionObject{
+				name:      "ArrayBuffer",
+				call:      builtinArrayBuffer,
+				construct: builtinNewArrayBuffer,
+			},
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 1,
+					},
+				},
+				"prototype": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueObject,
+						value: runtime.global.ArrayBufferPrototype,
+					},
+				},
+				"isView": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: isView_function,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+				"prototype",
+				"isView",
+			},
+		}
+		runtime.global.ArrayBufferPrototype.property["constructor"] =
+			_property{
+				mode: 0101,
+				value: Value{
+					kind:  valueObject,
+					value: runtime.global.ArrayBuffer,
+				},
+			}
+	}
+	{
+		copyWithin_function := &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 2,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+			},
+			value: _nativeFunctionObject{
+				name: "copyWithin",
+				call: builtinTypedArray_copyWithin,
+			},
+		}
+		entries_function := &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 0,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+			},
+			value: _nativeFunctionObject{
+				name: "entries",
+				call: builtinTypedArray_entries,
+			},
+		}
+		every_function := &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 1,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+			},
+			value: _nativeFunctionObject{
+				name: "every",
+				call: builtinTypedArray_every,
+			},
+		}
+		fill_function := &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 1,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+			},
+			value: _nativeFunctionObject{
+				name: "fill",
+				call: builtinTypedArray_fill,
+			},
+		}
+		filter_function := &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 2,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+			},
+			value: _nativeFunctionObject{
+				name: "filter",
+				call: builtinTypedArray_filter,
+			},
+		}
+		find_function := &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 1,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+			},
+			value: _nativeFunctionObject{
+				name: "find",
+				call: builtinTypedArray_find,
+			},
+		}
+		findIndex_function := &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 1,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+			},
+			value: _nativeFunctionObject{
+				name: "findIndex",
+				call: builtinTypedArray_findIndex,
+			},
+		}
+		forEach_function := &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 2,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+			},
+			value: _nativeFunctionObject{
+				name: "forEach",
+				call: builtinTypedArray_forEach,
+			},
+		}
+		includes_function := &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 1,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+			},
+			value: _nativeFunctionObject{
+				name: "includes",
+				call: builtinTypedArray_includes,
+			},
+		}
+		indexOf_function := &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 2,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+			},
+			value: _nativeFunctionObject{
+				name: "indexOf",
+				call: builtinTypedArray_indexOf,
+			},
+		}
+		join_function := &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 1,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+			},
+			value: _nativeFunctionObject{
+				name: "join",
+				call: builtinTypedArray_join,
+			},
+		}
+		keys_function := &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 0,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+			},
+			value: _nativeFunctionObject{
+				name: "keys",
+				call: builtinTypedArray_keys,
+			},
+		}
+		lastIndexOf_function := &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 2,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+			},
+			value: _nativeFunctionObject{
+				name: "lastIndexOf",
+				call: builtinTypedArray_lastIndexOf,
+			},
+		}
+		map_function := &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 2,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+			},
+			value: _nativeFunctionObject{
+				name: "map",
+				call: builtinTypedArray_map,
+			},
+		}
+		reduce_function := &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 2,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+			},
+			value: _nativeFunctionObject{
+				name: "reduce",
+				call: builtinTypedArray_reduce,
+			},
+		}
+		reduceRight_function := &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 2,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+			},
+			value: _nativeFunctionObject{
+				name: "reduceRight",
+				call: builtinTypedArray_reduceRight,
+			},
+		}
+		reverse_function := &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 0,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+			},
+			value: _nativeFunctionObject{
+				name: "reverse",
+				call: builtinTypedArray_reverse,
+			},
+		}
+		set_function := &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 2,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+			},
+			value: _nativeFunctionObject{
+				name: "set",
+				call: builtinTypedArray_set,
+			},
+		}
+		slice_function := &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 2,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+			},
+			value: _nativeFunctionObject{
+				name: "slice",
+				call: builtinTypedArray_slice,
+			},
+		}
+		some_function := &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 2,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+			},
+			value: _nativeFunctionObject{
+				name: "some",
+				call: builtinTypedArray_some,
+			},
+		}
+		sort_function := &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 1,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+			},
+			value: _nativeFunctionObject{
+				name: "sort",
+				call: builtinTypedArray_sort,
+			},
+		}
+		subarray_function := &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 2,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+			},
+			value: _nativeFunctionObject{
+				name: "subarray",
+				call: builtinTypedArray_subarray,
+			},
+		}
+		toLocaleString_function := &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 2,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+			},
+			value: _nativeFunctionObject{
+				name: "toLocaleString",
+				call: builtinTypedArray_toLocaleString,
+			},
+		}
+		toString_function := &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 0,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+			},
+			value: _nativeFunctionObject{
+				name: "toString",
+				call: builtinTypedArray_toString,
+			},
+		}
+		values_function := &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 0,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+			},
+			value: _nativeFunctionObject{
+				name: "values",
+				call: builtinTypedArray_values,
+			},
+		}
+		runtime.global.Int8ArrayPrototype = &_object{
+			runtime:     runtime,
+			class:       "Int8Array",
+			objectClass: _classTypedArray,
+			prototype:   runtime.global.ObjectPrototype,
+			extensible:  true,
+			value:       nil,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0100,
+					value: Value{
+						kind:  valueNumber,
+						value: uint32(3),
+					},
+				},
+				"copyWithin": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: copyWithin_function,
+					},
+				},
+				"entries": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: entries_function,
+					},
+				},
+				"every": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: every_function,
+					},
+				},
+				"fill": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: fill_function,
+					},
+				},
+				"filter": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: filter_function,
+					},
+				},
+				"find": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: find_function,
+					},
+				},
+				"findIndex": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: findIndex_function,
+					},
+				},
+				"forEach": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: forEach_function,
+					},
+				},
+				"includes": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: includes_function,
+					},
+				},
+				"indexOf": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: indexOf_function,
+					},
+				},
+				"join": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: join_function,
+					},
+				},
+				"keys": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: keys_function,
+					},
+				},
+				"lastIndexOf": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: lastIndexOf_function,
+					},
+				},
+				"map": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: map_function,
+					},
+				},
+				"reduce": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: reduce_function,
+					},
+				},
+				"reduceRight": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: reduceRight_function,
+					},
+				},
+				"reverse": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: reverse_function,
+					},
+				},
+				"set": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: set_function,
+					},
+				},
+				"slice": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: slice_function,
+					},
+				},
+				"some": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: some_function,
+					},
+				},
+				"sort": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: sort_function,
+					},
+				},
+				"subarray": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: subarray_function,
+					},
+				},
+				"toLocaleString": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: toLocaleString_function,
+					},
+				},
+				"toString": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: toString_function,
+					},
+				},
+				"values": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: values_function,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+				"copyWithin",
+				"entries",
+				"every",
+				"fill",
+				"filter",
+				"find",
+				"findIndex",
+				"forEach",
+				"includes",
+				"indexOf",
+				"join",
+				"keys",
+				"lastIndexOf",
+				"map",
+				"reduce",
+				"reduceRight",
+				"reverse",
+				"set",
+				"slice",
+				"some",
+				"sort",
+				"subarray",
+				"toLocaleString",
+				"toString",
+				"values",
+			},
+		}
+		runtime.global.Int8Array = &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			value: _nativeFunctionObject{
+				name:      "Int8Array",
+				call:      builtinInt8Array,
+				construct: builtinNewInt8Array,
+			},
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 3,
+					},
+				},
+				"prototype": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueObject,
+						value: runtime.global.Int8ArrayPrototype,
+					},
+				},
+				"BYTES_PER_ELEMENT": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 1,
+					},
+				},
+				"name": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueString,
+						value: "Int8Array",
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+				"prototype",
+				"BYTES_PER_ELEMENT",
+				"name",
+			},
+		}
+		runtime.global.Int16ArrayPrototype = &_object{
+			runtime:     runtime,
+			class:       "Int16Array",
+			objectClass: _classTypedArray,
+			prototype:   runtime.global.ObjectPrototype,
+			extensible:  true,
+			value:       nil,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0100,
+					value: Value{
+						kind:  valueNumber,
+						value: uint32(3),
+					},
+				},
+				"copyWithin": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: copyWithin_function,
+					},
+				},
+				"entries": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: entries_function,
+					},
+				},
+				"every": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: every_function,
+					},
+				},
+				"fill": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: fill_function,
+					},
+				},
+				"filter": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: filter_function,
+					},
+				},
+				"find": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: find_function,
+					},
+				},
+				"findIndex": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: findIndex_function,
+					},
+				},
+				"forEach": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: forEach_function,
+					},
+				},
+				"includes": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: includes_function,
+					},
+				},
+				"indexOf": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: indexOf_function,
+					},
+				},
+				"join": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: join_function,
+					},
+				},
+				"keys": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: keys_function,
+					},
+				},
+				"lastIndexOf": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: lastIndexOf_function,
+					},
+				},
+				"map": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: map_function,
+					},
+				},
+				"reduce": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: reduce_function,
+					},
+				},
+				"reduceRight": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: reduceRight_function,
+					},
+				},
+				"reverse": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: reverse_function,
+					},
+				},
+				"set": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: set_function,
+					},
+				},
+				"slice": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: slice_function,
+					},
+				},
+				"some": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: some_function,
+					},
+				},
+				"sort": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: sort_function,
+					},
+				},
+				"subarray": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: subarray_function,
+					},
+				},
+				"toLocaleString": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: toLocaleString_function,
+					},
+				},
+				"toString": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: toString_function,
+					},
+				},
+				"values": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: values_function,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+				"copyWithin",
+				"entries",
+				"every",
+				"fill",
+				"filter",
+				"find",
+				"findIndex",
+				"forEach",
+				"includes",
+				"indexOf",
+				"join",
+				"keys",
+				"lastIndexOf",
+				"map",
+				"reduce",
+				"reduceRight",
+				"reverse",
+				"set",
+				"slice",
+				"some",
+				"sort",
+				"subarray",
+				"toLocaleString",
+				"toString",
+				"values",
+			},
+		}
+		runtime.global.Int16Array = &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			value: _nativeFunctionObject{
+				name:      "Int16Array",
+				call:      builtinInt16Array,
+				construct: builtinNewInt16Array,
+			},
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 3,
+					},
+				},
+				"prototype": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueObject,
+						value: runtime.global.Int16ArrayPrototype,
+					},
+				},
+				"BYTES_PER_ELEMENT": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 2,
+					},
+				},
+				"name": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueString,
+						value: "Int16Array",
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+				"prototype",
+				"BYTES_PER_ELEMENT",
+				"name",
+			},
+		}
+		runtime.global.Int32ArrayPrototype = &_object{
+			runtime:     runtime,
+			class:       "Int32Array",
+			objectClass: _classTypedArray,
+			prototype:   runtime.global.ObjectPrototype,
+			extensible:  true,
+			value:       nil,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0100,
+					value: Value{
+						kind:  valueNumber,
+						value: uint32(3),
+					},
+				},
+				"copyWithin": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: copyWithin_function,
+					},
+				},
+				"entries": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: entries_function,
+					},
+				},
+				"every": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: every_function,
+					},
+				},
+				"fill": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: fill_function,
+					},
+				},
+				"filter": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: filter_function,
+					},
+				},
+				"find": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: find_function,
+					},
+				},
+				"findIndex": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: findIndex_function,
+					},
+				},
+				"forEach": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: forEach_function,
+					},
+				},
+				"includes": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: includes_function,
+					},
+				},
+				"indexOf": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: indexOf_function,
+					},
+				},
+				"join": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: join_function,
+					},
+				},
+				"keys": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: keys_function,
+					},
+				},
+				"lastIndexOf": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: lastIndexOf_function,
+					},
+				},
+				"map": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: map_function,
+					},
+				},
+				"reduce": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: reduce_function,
+					},
+				},
+				"reduceRight": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: reduceRight_function,
+					},
+				},
+				"reverse": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: reverse_function,
+					},
+				},
+				"set": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: set_function,
+					},
+				},
+				"slice": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: slice_function,
+					},
+				},
+				"some": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: some_function,
+					},
+				},
+				"sort": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: sort_function,
+					},
+				},
+				"subarray": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: subarray_function,
+					},
+				},
+				"toLocaleString": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: toLocaleString_function,
+					},
+				},
+				"toString": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: toString_function,
+					},
+				},
+				"values": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: values_function,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+				"copyWithin",
+				"entries",
+				"every",
+				"fill",
+				"filter",
+				"find",
+				"findIndex",
+				"forEach",
+				"includes",
+				"indexOf",
+				"join",
+				"keys",
+				"lastIndexOf",
+				"map",
+				"reduce",
+				"reduceRight",
+				"reverse",
+				"set",
+				"slice",
+				"some",
+				"sort",
+				"subarray",
+				"toLocaleString",
+				"toString",
+				"values",
+			},
+		}
+		runtime.global.Int32Array = &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			value: _nativeFunctionObject{
+				name:      "Int32Array",
+				call:      builtinInt32Array,
+				construct: builtinNewInt32Array,
+			},
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 3,
+					},
+				},
+				"prototype": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueObject,
+						value: runtime.global.Int32ArrayPrototype,
+					},
+				},
+				"BYTES_PER_ELEMENT": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 4,
+					},
+				},
+				"name": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueString,
+						value: "Int32Array",
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+				"prototype",
+				"BYTES_PER_ELEMENT",
+				"name",
+			},
+		}
+		runtime.global.Uint8ArrayPrototype = &_object{
+			runtime:     runtime,
+			class:       "Uint8Array",
+			objectClass: _classTypedArray,
+			prototype:   runtime.global.ObjectPrototype,
+			extensible:  true,
+			value:       nil,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0100,
+					value: Value{
+						kind:  valueNumber,
+						value: uint32(3),
+					},
+				},
+				"copyWithin": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: copyWithin_function,
+					},
+				},
+				"entries": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: entries_function,
+					},
+				},
+				"every": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: every_function,
+					},
+				},
+				"fill": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: fill_function,
+					},
+				},
+				"filter": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: filter_function,
+					},
+				},
+				"find": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: find_function,
+					},
+				},
+				"findIndex": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: findIndex_function,
+					},
+				},
+				"forEach": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: forEach_function,
+					},
+				},
+				"includes": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: includes_function,
+					},
+				},
+				"indexOf": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: indexOf_function,
+					},
+				},
+				"join": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: join_function,
+					},
+				},
+				"keys": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: keys_function,
+					},
+				},
+				"lastIndexOf": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: lastIndexOf_function,
+					},
+				},
+				"map": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: map_function,
+					},
+				},
+				"reduce": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: reduce_function,
+					},
+				},
+				"reduceRight": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: reduceRight_function,
+					},
+				},
+				"reverse": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: reverse_function,
+					},
+				},
+				"set": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: set_function,
+					},
+				},
+				"slice": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: slice_function,
+					},
+				},
+				"some": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: some_function,
+					},
+				},
+				"sort": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: sort_function,
+					},
+				},
+				"subarray": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: subarray_function,
+					},
+				},
+				"toLocaleString": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: toLocaleString_function,
+					},
+				},
+				"toString": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: toString_function,
+					},
+				},
+				"values": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: values_function,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+				"copyWithin",
+				"entries",
+				"every",
+				"fill",
+				"filter",
+				"find",
+				"findIndex",
+				"forEach",
+				"includes",
+				"indexOf",
+				"join",
+				"keys",
+				"lastIndexOf",
+				"map",
+				"reduce",
+				"reduceRight",
+				"reverse",
+				"set",
+				"slice",
+				"some",
+				"sort",
+				"subarray",
+				"toLocaleString",
+				"toString",
+				"values",
+			},
+		}
+		runtime.global.Uint8Array = &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			value: _nativeFunctionObject{
+				name:      "Uint8Array",
+				call:      builtinUint8Array,
+				construct: builtinNewUint8Array,
+			},
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 3,
+					},
+				},
+				"prototype": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueObject,
+						value: runtime.global.Uint8ArrayPrototype,
+					},
+				},
+				"BYTES_PER_ELEMENT": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 1,
+					},
+				},
+				"name": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueString,
+						value: "Uint8Array",
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+				"prototype",
+				"BYTES_PER_ELEMENT",
+				"name",
+			},
+		}
+		runtime.global.Uint8ClampedArrayPrototype = &_object{
+			runtime:     runtime,
+			class:       "Uint8ClampedArray",
+			objectClass: _classTypedArray,
+			prototype:   runtime.global.ObjectPrototype,
+			extensible:  true,
+			value:       nil,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0100,
+					value: Value{
+						kind:  valueNumber,
+						value: uint32(3),
+					},
+				},
+				"copyWithin": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: copyWithin_function,
+					},
+				},
+				"entries": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: entries_function,
+					},
+				},
+				"every": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: every_function,
+					},
+				},
+				"fill": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: fill_function,
+					},
+				},
+				"filter": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: filter_function,
+					},
+				},
+				"find": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: find_function,
+					},
+				},
+				"findIndex": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: findIndex_function,
+					},
+				},
+				"forEach": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: forEach_function,
+					},
+				},
+				"includes": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: includes_function,
+					},
+				},
+				"indexOf": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: indexOf_function,
+					},
+				},
+				"join": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: join_function,
+					},
+				},
+				"keys": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: keys_function,
+					},
+				},
+				"lastIndexOf": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: lastIndexOf_function,
+					},
+				},
+				"map": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: map_function,
+					},
+				},
+				"reduce": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: reduce_function,
+					},
+				},
+				"reduceRight": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: reduceRight_function,
+					},
+				},
+				"reverse": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: reverse_function,
+					},
+				},
+				"set": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: set_function,
+					},
+				},
+				"slice": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: slice_function,
+					},
+				},
+				"some": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: some_function,
+					},
+				},
+				"sort": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: sort_function,
+					},
+				},
+				"subarray": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: subarray_function,
+					},
+				},
+				"toLocaleString": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: toLocaleString_function,
+					},
+				},
+				"toString": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: toString_function,
+					},
+				},
+				"values": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: values_function,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+				"copyWithin",
+				"entries",
+				"every",
+				"fill",
+				"filter",
+				"find",
+				"findIndex",
+				"forEach",
+				"includes",
+				"indexOf",
+				"join",
+				"keys",
+				"lastIndexOf",
+				"map",
+				"reduce",
+				"reduceRight",
+				"reverse",
+				"set",
+				"slice",
+				"some",
+				"sort",
+				"subarray",
+				"toLocaleString",
+				"toString",
+				"values",
+			},
+		}
+		runtime.global.Uint8ClampedArray = &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			value: _nativeFunctionObject{
+				name:      "Uint8ClampedArray",
+				call:      builtinUint8ClampedArray,
+				construct: builtinNewUint8ClampedArray,
+			},
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 3,
+					},
+				},
+				"prototype": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueObject,
+						value: runtime.global.Uint8ClampedArrayPrototype,
+					},
+				},
+				"BYTES_PER_ELEMENT": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 1,
+					},
+				},
+				"name": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueString,
+						value: "Uint8ClampedArray",
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+				"prototype",
+				"BYTES_PER_ELEMENT",
+				"name",
+			},
+		}
+		runtime.global.Uint16ArrayPrototype = &_object{
+			runtime:     runtime,
+			class:       "Uint16Array",
+			objectClass: _classTypedArray,
+			prototype:   runtime.global.ObjectPrototype,
+			extensible:  true,
+			value:       nil,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0100,
+					value: Value{
+						kind:  valueNumber,
+						value: uint32(3),
+					},
+				},
+				"copyWithin": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: copyWithin_function,
+					},
+				},
+				"entries": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: entries_function,
+					},
+				},
+				"every": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: every_function,
+					},
+				},
+				"fill": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: fill_function,
+					},
+				},
+				"filter": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: filter_function,
+					},
+				},
+				"find": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: find_function,
+					},
+				},
+				"findIndex": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: findIndex_function,
+					},
+				},
+				"forEach": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: forEach_function,
+					},
+				},
+				"includes": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: includes_function,
+					},
+				},
+				"indexOf": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: indexOf_function,
+					},
+				},
+				"join": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: join_function,
+					},
+				},
+				"keys": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: keys_function,
+					},
+				},
+				"lastIndexOf": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: lastIndexOf_function,
+					},
+				},
+				"map": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: map_function,
+					},
+				},
+				"reduce": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: reduce_function,
+					},
+				},
+				"reduceRight": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: reduceRight_function,
+					},
+				},
+				"reverse": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: reverse_function,
+					},
+				},
+				"set": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: set_function,
+					},
+				},
+				"slice": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: slice_function,
+					},
+				},
+				"some": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: some_function,
+					},
+				},
+				"sort": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: sort_function,
+					},
+				},
+				"subarray": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: subarray_function,
+					},
+				},
+				"toLocaleString": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: toLocaleString_function,
+					},
+				},
+				"toString": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: toString_function,
+					},
+				},
+				"values": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: values_function,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+				"copyWithin",
+				"entries",
+				"every",
+				"fill",
+				"filter",
+				"find",
+				"findIndex",
+				"forEach",
+				"includes",
+				"indexOf",
+				"join",
+				"keys",
+				"lastIndexOf",
+				"map",
+				"reduce",
+				"reduceRight",
+				"reverse",
+				"set",
+				"slice",
+				"some",
+				"sort",
+				"subarray",
+				"toLocaleString",
+				"toString",
+				"values",
+			},
+		}
+		runtime.global.Uint16Array = &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			value: _nativeFunctionObject{
+				name:      "Uint16Array",
+				call:      builtinUint16Array,
+				construct: builtinNewUint16Array,
+			},
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 3,
+					},
+				},
+				"prototype": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueObject,
+						value: runtime.global.Uint16ArrayPrototype,
+					},
+				},
+				"BYTES_PER_ELEMENT": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 2,
+					},
+				},
+				"name": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueString,
+						value: "Uint16Array",
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+				"prototype",
+				"BYTES_PER_ELEMENT",
+				"name",
+			},
+		}
+		runtime.global.Uint32ArrayPrototype = &_object{
+			runtime:     runtime,
+			class:       "Uint32Array",
+			objectClass: _classTypedArray,
+			prototype:   runtime.global.ObjectPrototype,
+			extensible:  true,
+			value:       nil,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0100,
+					value: Value{
+						kind:  valueNumber,
+						value: uint32(3),
+					},
+				},
+				"copyWithin": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: copyWithin_function,
+					},
+				},
+				"entries": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: entries_function,
+					},
+				},
+				"every": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: every_function,
+					},
+				},
+				"fill": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: fill_function,
+					},
+				},
+				"filter": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: filter_function,
+					},
+				},
+				"find": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: find_function,
+					},
+				},
+				"findIndex": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: findIndex_function,
+					},
+				},
+				"forEach": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: forEach_function,
+					},
+				},
+				"includes": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: includes_function,
+					},
+				},
+				"indexOf": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: indexOf_function,
+					},
+				},
+				"join": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: join_function,
+					},
+				},
+				"keys": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: keys_function,
+					},
+				},
+				"lastIndexOf": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: lastIndexOf_function,
+					},
+				},
+				"map": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: map_function,
+					},
+				},
+				"reduce": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: reduce_function,
+					},
+				},
+				"reduceRight": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: reduceRight_function,
+					},
+				},
+				"reverse": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: reverse_function,
+					},
+				},
+				"set": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: set_function,
+					},
+				},
+				"slice": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: slice_function,
+					},
+				},
+				"some": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: some_function,
+					},
+				},
+				"sort": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: sort_function,
+					},
+				},
+				"subarray": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: subarray_function,
+					},
+				},
+				"toLocaleString": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: toLocaleString_function,
+					},
+				},
+				"toString": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: toString_function,
+					},
+				},
+				"values": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: values_function,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+				"copyWithin",
+				"entries",
+				"every",
+				"fill",
+				"filter",
+				"find",
+				"findIndex",
+				"forEach",
+				"includes",
+				"indexOf",
+				"join",
+				"keys",
+				"lastIndexOf",
+				"map",
+				"reduce",
+				"reduceRight",
+				"reverse",
+				"set",
+				"slice",
+				"some",
+				"sort",
+				"subarray",
+				"toLocaleString",
+				"toString",
+				"values",
+			},
+		}
+		runtime.global.Uint32Array = &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			value: _nativeFunctionObject{
+				name:      "Uint32Array",
+				call:      builtinUint32Array,
+				construct: builtinNewUint32Array,
+			},
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 3,
+					},
+				},
+				"prototype": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueObject,
+						value: runtime.global.Uint32ArrayPrototype,
+					},
+				},
+				"BYTES_PER_ELEMENT": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 4,
+					},
+				},
+				"name": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueString,
+						value: "Uint32Array",
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+				"prototype",
+				"BYTES_PER_ELEMENT",
+				"name",
+			},
+		}
+		runtime.global.Float32ArrayPrototype = &_object{
+			runtime:     runtime,
+			class:       "Float32Array",
+			objectClass: _classTypedArray,
+			prototype:   runtime.global.ObjectPrototype,
+			extensible:  true,
+			value:       nil,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0100,
+					value: Value{
+						kind:  valueNumber,
+						value: uint32(3),
+					},
+				},
+				"copyWithin": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: copyWithin_function,
+					},
+				},
+				"entries": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: entries_function,
+					},
+				},
+				"every": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: every_function,
+					},
+				},
+				"fill": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: fill_function,
+					},
+				},
+				"filter": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: filter_function,
+					},
+				},
+				"find": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: find_function,
+					},
+				},
+				"findIndex": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: findIndex_function,
+					},
+				},
+				"forEach": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: forEach_function,
+					},
+				},
+				"includes": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: includes_function,
+					},
+				},
+				"indexOf": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: indexOf_function,
+					},
+				},
+				"join": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: join_function,
+					},
+				},
+				"keys": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: keys_function,
+					},
+				},
+				"lastIndexOf": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: lastIndexOf_function,
+					},
+				},
+				"map": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: map_function,
+					},
+				},
+				"reduce": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: reduce_function,
+					},
+				},
+				"reduceRight": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: reduceRight_function,
+					},
+				},
+				"reverse": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: reverse_function,
+					},
+				},
+				"set": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: set_function,
+					},
+				},
+				"slice": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: slice_function,
+					},
+				},
+				"some": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: some_function,
+					},
+				},
+				"sort": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: sort_function,
+					},
+				},
+				"subarray": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: subarray_function,
+					},
+				},
+				"toLocaleString": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: toLocaleString_function,
+					},
+				},
+				"toString": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: toString_function,
+					},
+				},
+				"values": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: values_function,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+				"copyWithin",
+				"entries",
+				"every",
+				"fill",
+				"filter",
+				"find",
+				"findIndex",
+				"forEach",
+				"includes",
+				"indexOf",
+				"join",
+				"keys",
+				"lastIndexOf",
+				"map",
+				"reduce",
+				"reduceRight",
+				"reverse",
+				"set",
+				"slice",
+				"some",
+				"sort",
+				"subarray",
+				"toLocaleString",
+				"toString",
+				"values",
+			},
+		}
+		runtime.global.Float32Array = &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			value: _nativeFunctionObject{
+				name:      "Float32Array",
+				call:      builtinFloat32Array,
+				construct: builtinNewFloat32Array,
+			},
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 3,
+					},
+				},
+				"prototype": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueObject,
+						value: runtime.global.Float32ArrayPrototype,
+					},
+				},
+				"BYTES_PER_ELEMENT": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 4,
+					},
+				},
+				"name": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueString,
+						value: "Float32Array",
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+				"prototype",
+				"BYTES_PER_ELEMENT",
+				"name",
+			},
+		}
+		runtime.global.Float64ArrayPrototype = &_object{
+			runtime:     runtime,
+			class:       "Float64Array",
+			objectClass: _classTypedArray,
+			prototype:   runtime.global.ObjectPrototype,
+			extensible:  true,
+			value:       nil,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0100,
+					value: Value{
+						kind:  valueNumber,
+						value: uint32(3),
+					},
+				},
+				"copyWithin": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: copyWithin_function,
+					},
+				},
+				"entries": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: entries_function,
+					},
+				},
+				"every": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: every_function,
+					},
+				},
+				"fill": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: fill_function,
+					},
+				},
+				"filter": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: filter_function,
+					},
+				},
+				"find": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: find_function,
+					},
+				},
+				"findIndex": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: findIndex_function,
+					},
+				},
+				"forEach": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: forEach_function,
+					},
+				},
+				"includes": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: includes_function,
+					},
+				},
+				"indexOf": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: indexOf_function,
+					},
+				},
+				"join": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: join_function,
+					},
+				},
+				"keys": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: keys_function,
+					},
+				},
+				"lastIndexOf": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: lastIndexOf_function,
+					},
+				},
+				"map": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: map_function,
+					},
+				},
+				"reduce": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: reduce_function,
+					},
+				},
+				"reduceRight": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: reduceRight_function,
+					},
+				},
+				"reverse": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: reverse_function,
+					},
+				},
+				"set": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: set_function,
+					},
+				},
+				"slice": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: slice_function,
+					},
+				},
+				"some": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: some_function,
+					},
+				},
+				"sort": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: sort_function,
+					},
+				},
+				"subarray": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: subarray_function,
+					},
+				},
+				"toLocaleString": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: toLocaleString_function,
+					},
+				},
+				"toString": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: toString_function,
+					},
+				},
+				"values": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: values_function,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+				"copyWithin",
+				"entries",
+				"every",
+				"fill",
+				"filter",
+				"find",
+				"findIndex",
+				"forEach",
+				"includes",
+				"indexOf",
+				"join",
+				"keys",
+				"lastIndexOf",
+				"map",
+				"reduce",
+				"reduceRight",
+				"reverse",
+				"set",
+				"slice",
+				"some",
+				"sort",
+				"subarray",
+				"toLocaleString",
+				"toString",
+				"values",
+			},
+		}
+		runtime.global.Float64Array = &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			value: _nativeFunctionObject{
+				name:      "Float64Array",
+				call:      builtinFloat64Array,
+				construct: builtinNewFloat64Array,
+			},
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 3,
+					},
+				},
+				"prototype": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueObject,
+						value: runtime.global.Float64ArrayPrototype,
+					},
+				},
+				"BYTES_PER_ELEMENT": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 8,
+					},
+				},
+				"name": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueString,
+						value: "Float64Array",
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+				"prototype",
+				"BYTES_PER_ELEMENT",
+				"name",
+			},
+		}
+		runtime.global.Int8ArrayPrototype.property["constructor"] =
+			_property{
+				mode: 0101,
+				value: Value{
+					kind:  valueObject,
+					value: runtime.global.Int8Array,
+				},
+			}
+		runtime.global.Int16ArrayPrototype.property["constructor"] =
+			_property{
+				mode: 0101,
+				value: Value{
+					kind:  valueObject,
+					value: runtime.global.Int16Array,
+				},
+			}
+		runtime.global.Int32ArrayPrototype.property["constructor"] =
+			_property{
+				mode: 0101,
+				value: Value{
+					kind:  valueObject,
+					value: runtime.global.Int32Array,
+				},
+			}
+		runtime.global.Uint8ArrayPrototype.property["constructor"] =
+			_property{
+				mode: 0101,
+				value: Value{
+					kind:  valueObject,
+					value: runtime.global.Uint8Array,
+				},
+			}
+		runtime.global.Uint8ClampedArrayPrototype.property["constructor"] =
+			_property{
+				mode: 0101,
+				value: Value{
+					kind:  valueObject,
+					value: runtime.global.Uint8ClampedArray,
+				},
+			}
+		runtime.global.Uint16ArrayPrototype.property["constructor"] =
+			_property{
+				mode: 0101,
+				value: Value{
+					kind:  valueObject,
+					value: runtime.global.Uint16Array,
+				},
+			}
+		runtime.global.Uint32ArrayPrototype.property["constructor"] =
+			_property{
+				mode: 0101,
+				value: Value{
+					kind:  valueObject,
+					value: runtime.global.Uint32Array,
+				},
+			}
+		runtime.global.Float32ArrayPrototype.property["constructor"] =
+			_property{
+				mode: 0101,
+				value: Value{
+					kind:  valueObject,
+					value: runtime.global.Float32Array,
+				},
+			}
+		runtime.global.Float64ArrayPrototype.property["constructor"] =
+			_property{
+				mode: 0101,
+				value: Value{
+					kind:  valueObject,
+					value: runtime.global.Float64Array,
+				},
+			}
+	}
+	{
+		toString_function := &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 0,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+			},
+			value: _nativeFunctionObject{
+				name: "toString",
+				call: builtinSymbol_toString,
+			},
+		}
+		valueOf_function := &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 0,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+			},
+			value: _nativeFunctionObject{
+				name: "valueOf",
+				call: builtinSymbol_valueOf,
+			},
+		}
+		for_function := &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 1,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+			},
+			value: _nativeFunctionObject{
+				name: "for",
+				call: builtinSymbol_for,
+			},
+		}
+		keyFor_function := &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 1,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+			},
+			value: _nativeFunctionObject{
+				name: "keyFor",
+				call: builtinSymbol_keyFor,
+			},
+		}
+		runtime.global.SymbolPrototype = &_object{
+			runtime:     runtime,
+			class:       "Symbol",
+			objectClass: _classObject,
+			prototype:   runtime.global.ObjectPrototype,
+			extensible:  true,
+			value:       nil,
+			property: map[string]_property{
+				"length": _property{
+					mode: 0100,
+					value: Value{
+						kind:  valueNumber,
+						value: uint32(1),
+					},
+				},
+				"toString": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: toString_function,
+					},
+				},
+				"valueOf": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: valueOf_function,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+				"toString",
+				"valueOf",
+			},
+		}
+		runtime.global.Symbol = &_object{
+			runtime:     runtime,
+			class:       "Function",
+			objectClass: _classObject,
+			prototype:   runtime.global.FunctionPrototype,
+			extensible:  true,
+			value: _nativeFunctionObject{
+				name:      "Symbol",
+				call:      builtinSymbol,
+				construct: builtinNewSymbol,
+			},
+			property: map[string]_property{
+				"length": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueNumber,
+						value: 1,
+					},
+				},
+				"prototype": _property{
+					mode: 0,
+					value: Value{
+						kind:  valueObject,
+						value: runtime.global.SymbolPrototype,
+					},
+				},
+				"for": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: for_function,
+					},
+				},
+				"keyFor": _property{
+					mode: 0101,
+					value: Value{
+						kind:  valueObject,
+						value: keyFor_function,
+					},
+				},
+			},
+			propertyOrder: []string{
+				"length",
+				"prototype",
+				"for",
+				"keyFor",
+			},
+		}
+		runtime.global.SymbolPrototype.property["constructor"] =
+			_property{
+				mode: 0101,
+				value: Value{
+					kind:  valueObject,
+					value: runtime.global.Symbol,
+				},
+			}
+	}
+	{
 		eval_function := &_object{
 			runtime:     runtime,
 			class:       "Function",
@@ -6153,6 +9772,83 @@ func _newContext(runtime *_runtime) {
 					value: runtime.global.JSON,
 				},
 			},
+			"ArrayBuffer": _property{
+				mode: 0101,
+				value: Value{
+					kind:  valueObject,
+					value: runtime.global.ArrayBuffer,
+				},
+			},
+			"Int8Array": _property{
+				mode: 0101,
+				value: Value{
+					kind:  valueObject,
+					value: runtime.global.Int8Array,
+				},
+			},
+			"Int16Array": _property{
+				mode: 0101,
+				value: Value{
+					kind:  valueObject,
+					value: runtime.global.Int16Array,
+				},
+			},
+			"Int32Array": _property{
+				mode: 0101,
+				value: Value{
+					kind:  valueObject,
+					value: runtime.global.Int32Array,
+				},
+			},
+			"Uint8Array": _property{
+				mode: 0101,
+				value: Value{
+					kind:  valueObject,
+					value: runtime.global.Uint8Array,
+				},
+			},
+			"Uint8ClampedArray": _property{
+				mode: 0101,
+				value: Value{
+					kind:  valueObject,
+					value: runtime.global.Uint8ClampedArray,
+				},
+			},
+			"Uint16Array": _property{
+				mode: 0101,
+				value: Value{
+					kind:  valueObject,
+					value: runtime.global.Uint16Array,
+				},
+			},
+			"Uint32Array": _property{
+				mode: 0101,
+				value: Value{
+					kind:  valueObject,
+					value: runtime.global.Uint32Array,
+				},
+			},
+			"Float32Array": _property{
+				mode: 0101,
+				value: Value{
+					kind:  valueObject,
+					value: runtime.global.Float32Array,
+				},
+			},
+			"Float64Array": _property{
+				mode: 0101,
+				value: Value{
+					kind:  valueObject,
+					value: runtime.global.Float64Array,
+				},
+			},
+			"Symbol": _property{
+				mode: 0101,
+				value: Value{
+					kind:  valueObject,
+					value: runtime.global.Symbol,
+				},
+			},
 			"undefined": _property{
 				mode: 0,
 				value: Value{
@@ -6203,6 +9899,17 @@ func _newContext(runtime *_runtime) {
 			"SyntaxError",
 			"URIError",
 			"JSON",
+			"ArrayBuffer",
+			"Int8Array",
+			"Int16Array",
+			"Int32Array",
+			"Uint8Array",
+			"Uint8ClampedArray",
+			"Uint16Array",
+			"Uint32Array",
+			"Float32Array",
+			"Float64Array",
+			"Symbol",
 			"undefined",
 			"NaN",
 			"Infinity",
@@ -6644,6 +10351,13 @@ func toValue_bool(value bool) Value {
 func toValue_object(value *_object) Value {
 	return Value{
 		kind:  valueObject,
+		value: value,
+	}
+}
+
+func toValue_symbol(value _symbol) Value {
+	return Value{
+		kind:  valueSymbol,
 		value: value,
 	}
 }

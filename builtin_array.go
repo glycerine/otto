@@ -1,6 +1,7 @@
 package otto
 
 import (
+	"fmt"
 	"strconv"
 	"strings"
 )
@@ -561,7 +562,7 @@ func builtinArray_some(call FunctionCall) Value {
 	panic(call.runtime.panicTypeError())
 }
 
-func builtinArray_forEach(call FunctionCall) Value {
+func arrayForEach(call FunctionCall) Value {
 	thisObject := call.thisObject()
 	this := toValue_object(thisObject)
 	if iterator := call.Argument(0); iterator.isCallable() {
@@ -575,6 +576,10 @@ func builtinArray_forEach(call FunctionCall) Value {
 		return Value{}
 	}
 	panic(call.runtime.panicTypeError())
+}
+
+func builtinArray_forEach(call FunctionCall) Value {
+	return arrayForEach(call)
 }
 
 func builtinArray_map(call FunctionCall) Value {
@@ -678,4 +683,230 @@ func builtinArray_reduceRight(call FunctionCall) Value {
 		}
 	}
 	panic(call.runtime.panicTypeError())
+}
+
+//
+// ES6 methods
+//
+
+func builtinArray_copyWithin(call FunctionCall) Value {
+	this := call.thisObject()
+	length, _ := this.get("length").ToInteger()
+	target, err := call.Argument(0).ToInteger()
+	if err != nil {
+		return UndefinedValue()
+	}
+
+	start, err := call.Argument(1).ToInteger()
+	if err != nil {
+		return UndefinedValue()
+	}
+
+	var to int64
+	if target < 0 {
+		to = _maxInt64(length+target, 0)
+	} else {
+		to = _minInt64(target, length)
+	}
+
+	var from int64
+	if start < 0 {
+		from = _maxInt64(length+start, 0)
+	} else {
+		from = _minInt64(start, length)
+	}
+
+	var end int64
+	lastArg := call.Argument(2)
+	if lastArg.IsUndefined() || err != nil {
+		end = length
+	} else {
+		end = lastArg.number().int64
+	}
+
+	var final int64
+	if end < 0 {
+		final = _maxInt64(length+end, 0)
+	} else {
+		final = _minInt64(end, length)
+	}
+
+	count := _minInt64(final-from, length-to)
+
+	var direction int64
+	if from < to && to < from+count {
+		direction = -1
+		from = from + count - 1
+		to = to + count - 1
+	} else {
+		direction = 1
+	}
+
+	for count > 0 {
+		fromKey := strconv.Itoa(int(from))
+		toKey := strconv.Itoa(int(to))
+		if this.hasProperty(fromKey) {
+			fromValue := this.get(fromKey)
+			this.put(toKey, fromValue, true)
+		} else {
+			this.delete(toKey, true)
+		}
+
+		from = from + direction
+		to = to + direction
+		count = count - 1
+	}
+
+	return call.This
+}
+
+func builtinArray_fill(call FunctionCall) Value {
+	this := call.thisObject()
+	value := call.Argument(0)
+	length := this.get("length").number().int64
+	start := call.Argument(1)
+	end := call.Argument(2)
+
+	var relativeStart int64
+	if start.IsUndefined() {
+		relativeStart = 0
+	} else {
+		relativeStart = start.number().int64
+	}
+
+	var k int64
+	if relativeStart < 0 {
+		k = _maxInt64(length+relativeStart, 0)
+	} else {
+		k = _minInt64(relativeStart, length)
+	}
+
+	var relativeEnd int64
+	if end.IsUndefined() {
+		relativeEnd = length
+	} else {
+		relativeEnd = end.number().int64
+	}
+
+	var final int64
+	if relativeEnd < 0 {
+		final = _maxInt64(length+relativeEnd, 0)
+	} else {
+		final = _minInt64(relativeEnd, length)
+	}
+
+	for k < final {
+		pk := arrayIndexToString(k)
+		this.put(pk, value, true)
+		k += 1
+	}
+
+	return call.This
+}
+
+func builtinArray_find(call FunctionCall) Value {
+	this := call.thisObject()
+	predicate := call.Argument(0)
+	thisArg := call.Argument(1)
+	length := this.get("length").number().int64
+	if !predicate.isCallable() {
+		panic(call.runtime.panicTypeError(fmt.Sprintf("%s is not a function", predicate.string())))
+	}
+
+	var k int64
+	for k = 0; k < length; k++ {
+		pk := arrayIndexToString(k)
+		value := this.get(pk)
+		testResult, err := predicate.Call(thisArg, value, k, call.This)
+		if err != nil {
+			panic(err)
+		}
+
+		if testResult.bool() {
+			return value
+		}
+	}
+
+	return UndefinedValue()
+}
+
+func builtinArray_findIndex(call FunctionCall) Value {
+	this := call.thisObject()
+	predicate := call.Argument(0)
+	thisArg := call.Argument(1)
+	length := this.get("length").number().int64
+	if !predicate.isCallable() {
+		panic(call.runtime.panicTypeError(fmt.Sprintf("%s is not a function", predicate.string())))
+	}
+
+	var k int64
+	for k = 0; k < length; k++ {
+		pk := arrayIndexToString(k)
+		value := this.get(pk)
+		testResult, err := predicate.Call(thisArg, value, k, call.This)
+		if err != nil {
+			panic(err)
+		}
+
+		if testResult.bool() {
+			return toValue_int64(k)
+		}
+	}
+
+	return toValue_int64(-1)
+}
+
+// TODO: These require a Array Iterator object to work properly
+// or we can just return a plain 'ole array (?)
+func builtinArray_entries(call FunctionCall) Value {
+	panic(call.runtime.panicTypeError("Unimplemented method"))
+}
+
+func builtinArray_keys(call FunctionCall) Value {
+	panic(call.runtime.panicTypeError("Unimplemented method"))
+}
+
+func builtinArray_values(call FunctionCall) Value {
+	panic(call.runtime.panicTypeError("Unimplemented method"))
+}
+
+//
+// ES7
+//
+
+// 22.1.3.11
+func builtinArray_includes(call FunctionCall) Value {
+	this := call.thisObject()
+	searchElement := call.Argument(0)
+	fromIndex := call.Argument(1)
+
+	length := this.get("length").number().int64
+	if length == 0 {
+		return falseValue
+	}
+
+	var n int64
+	if fromIndex.IsUndefined() {
+		n = 0
+	} else {
+		n = fromIndex.number().int64
+	}
+
+	var k int64
+	if n >= 0 {
+		k = n
+	} else {
+		k = _maxInt64(length+n, 0)
+	}
+
+	for k < length {
+		pk := arrayIndexToString(k)
+		el := this.get(pk)
+		if sameValue(searchElement, el) {
+			return trueValue
+		}
+		k += 1
+	}
+
+	return falseValue
 }

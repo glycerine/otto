@@ -38,6 +38,7 @@ var (
 	_classGoMap,
 	_classGoArray,
 	_classGoSlice,
+	_classTypedArray,
 	_ *_objectClass
 )
 
@@ -158,6 +159,21 @@ func init() {
 		goSliceDefineOwnProperty,
 		goSliceDelete,
 		goSliceEnumerate,
+		objectClone,
+		nil,
+	}
+
+	_classTypedArray = &_objectClass{
+		typedArrayGetOwnProperty,
+		objectGetProperty,
+		typedArrayGet,
+		objectCanPut,
+		typedArrayPut,
+		objectHasProperty,
+		objectHasOwnProperty,
+		objectDefineOwnProperty,
+		objectDelete,
+		objectEnumerate,
 		objectClone,
 		nil,
 	}

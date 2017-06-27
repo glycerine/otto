@@ -96,6 +96,8 @@ func (value Value) string() string {
 		return string(utf16.Decode(value))
 	case string:
 		return value
+	case _symbol:
+		return fmt.Sprintf("@@%s", value.description)
 	case *_object:
 		return value.DefaultValue(defaultValueHintString).string()
 	}

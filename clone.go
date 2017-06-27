@@ -18,10 +18,11 @@ func (in *_runtime) clone() *_runtime {
 	defer in.lck.Unlock()
 
 	out := &_runtime{
-		debugger:   in.debugger,
-		random:     in.random,
-		stackLimit: in.stackLimit,
-		traceLimit: in.traceLimit,
+		debugger:       in.debugger,
+		random:         in.random,
+		stackLimit:     in.stackLimit,
+		traceLimit:     in.traceLimit,
+		symbolRegistry: make(map[string]_symbol),
 	}
 
 	clone := _clone{
@@ -53,6 +54,17 @@ func (in *_runtime) clone() *_runtime {
 		clone.object(in.global.SyntaxError),
 		clone.object(in.global.URIError),
 		clone.object(in.global.JSON),
+		clone.object(in.global.ArrayBuffer),
+		clone.object(in.global.Int8Array),
+		clone.object(in.global.Int16Array),
+		clone.object(in.global.Int32Array),
+		clone.object(in.global.Uint8Array),
+		clone.object(in.global.Uint8ClampedArray),
+		clone.object(in.global.Uint16Array),
+		clone.object(in.global.Uint32Array),
+		clone.object(in.global.Float32Array),
+		clone.object(in.global.Float64Array),
+		clone.object(in.global.Symbol),
 
 		clone.object(in.global.ObjectPrototype),
 		clone.object(in.global.FunctionPrototype),
@@ -69,6 +81,17 @@ func (in *_runtime) clone() *_runtime {
 		clone.object(in.global.ReferenceErrorPrototype),
 		clone.object(in.global.SyntaxErrorPrototype),
 		clone.object(in.global.URIErrorPrototype),
+		clone.object(in.global.ArrayBufferPrototype),
+		clone.object(in.global.Int8ArrayPrototype),
+		clone.object(in.global.Int16ArrayPrototype),
+		clone.object(in.global.Int32ArrayPrototype),
+		clone.object(in.global.Uint8ArrayPrototype),
+		clone.object(in.global.Uint8ClampedArrayPrototype),
+		clone.object(in.global.Uint16ArrayPrototype),
+		clone.object(in.global.Uint32ArrayPrototype),
+		clone.object(in.global.Float32ArrayPrototype),
+		clone.object(in.global.Float64ArrayPrototype),
+		clone.object(in.global.SymbolPrototype),
 	}
 
 	out.eval = out.globalObject.property["eval"].value.(Value).value.(*_object)

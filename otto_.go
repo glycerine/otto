@@ -176,3 +176,17 @@ func eachPair(list []interface{}, fn func(_0, _1 interface{})) {
 		fn(_0, _1)
 	}
 }
+
+func _minInt64(i, j int64) int64 {
+	if i < j {
+		return i
+	}
+	return j
+}
+
+func _maxInt64(i, j int64) int64 {
+	if i < j {
+		return j
+	}
+	return i
+}

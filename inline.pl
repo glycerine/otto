@@ -31,11 +31,11 @@ import (
 
 func _newContext(runtime *_runtime) {
 @{[ join "\n", $self->newContext() ]}
-}    
+}
 
 func newConsoleObject(runtime *_runtime) *_object {
 @{[ join "\n", $self->newConsoleObject() ]}
-}    
+}
 _END_
 
 for (qw/int int8 int16 int32 int64 uint uint8 uint16 uint32 uint64 float32 float64/) {
@@ -76,6 +76,13 @@ func toValue_bool(value bool) Value {
 func toValue_object(value *_object) Value {
     return Value{
         kind: valueObject,
+        value: value,
+    }
+}
+
+func toValue_symbol(value _symbol) Value {
+    return Value{
+        kind: valueSymbol,
         value: value,
     }
 }
@@ -247,6 +254,14 @@ sub newContext {
                 "filter", 1,
                 "reduce", 1,
                 "reduceRight", 1,
+                "copyWithin", 2,
+                "entries", 0,
+                "fill", 1,
+                "find", 1,
+                "findIndex", 1,
+                "includes", 1,
+                "keys", 0,
+                "values", 0,
             );
             return
             ".${class}Prototype =",
@@ -597,6 +612,107 @@ sub newContext {
             ),
         }),
 
+        # ArrayBuffer
+        $self->block(sub {
+            my $class = "ArrayBuffer";
+            my @got = $self->functionDeclare(
+                $class,
+                "slice", 2,
+            );
+            return
+            ".${class}Prototype =",
+            $self->globalPrototype(
+                $class,
+                "_classObject",
+                ".ArrayBufferPrototype",
+                undef,
+                $self->property("length", $self->numberValue("uint32(1)"), "0100"),
+                @got,
+            ),
+            ".$class =",
+            $self->globalFunction(
+                $class,
+                1,
+                $self->functionDeclare(
+                    $class,
+                    "isView", 1,
+                ),
+            ),
+        }),
+
+        # TypedArrays
+        $self->block(sub {
+            my @got = $self->functionDeclare(
+                "TypedArray",
+                "copyWithin", 2,
+                "entries", 0,
+                "every", 1,
+                "fill", 1,
+                "filter", 2,
+                "find", 1,
+                "findIndex", 1,
+                "forEach", 2,
+                "includes", 1,
+                "indexOf", 2,
+                "join", 1,
+                "keys", 0,
+                "lastIndexOf", 2,
+                "map", 2,
+                "reduce", 2,
+                "reduceRight", 2,
+                "reverse", 0,
+                "set", 2,
+                "slice", 2,
+                "some", 2,
+                "sort", 1,
+                "subarray", 2,
+                "toLocaleString", 2,
+                "toString", 0,
+                "values", 0,
+            );
+
+            $self->typedArray("Int8Array", 1, @got),
+            $self->typedArray("Int16Array", 2, @got),
+            $self->typedArray("Int32Array", 4, @got),
+            $self->typedArray("Uint8Array", 1, @got),
+            $self->typedArray("Uint8ClampedArray", 1, @got),
+            $self->typedArray("Uint16Array", 2, @got),
+            $self->typedArray("Uint32Array", 4, @got),
+            $self->typedArray("Float32Array", 4, @got),
+            $self->typedArray("Float64Array", 8, @got),
+        }),
+
+        # Symbol
+        $self->block(sub {
+            my $class = "Symbol";
+            my @got = $self->functionDeclare(
+                "Symbol",
+                "toString", 0,
+                "valueOf", 0,
+            );
+
+            return
+            ".${class}Prototype =",
+            $self->globalPrototype(
+                $class,
+                "_classObject",
+                ".ObjectPrototype",
+                undef,
+                $self->property("length", $self->numberValue("uint32(1)"), "0100"),
+                @got,
+            ),
+            ".$class =",
+            $self->globalFunction(
+                $class,
+                1,
+                $self->functionDeclare(
+                    $class,
+                    "for", 1,
+                    "keyFor", 1,
+                ),
+            ),
+        }),
+
         # Global
         $self->block(sub {
             my $class = "Global";
@@ -634,6 +750,17 @@ sub newContext {
                     "SyntaxError",
                     "URIError",
                     "JSON",
+                    "ArrayBuffer",
+                    "Int8Array",
+                	"Int16Array",
+                	"Int32Array",
+                	"Uint8Array",
+                	"Uint8ClampedArray",
+                	"Uint16Array",
+                	"Uint32Array",
+                	"Float32Array",
+                	"Float64Array",
+                    "Symbol",
                 ),
                 $self->property("undefined", $self->undefinedValue(), "0"),
                 $self->property("NaN", $self->numberValue("math.NaN()"), "0"),
@@ -730,7 +857,7 @@ sub propertyOrder {
 sub globalObject {
     my $self = shift;
     my $name = shift;
-    
+
     my $propertyMap = "";
     if (@_) {
         $propertyMap = join "\n", $self->propertyMap(@_);
@@ -754,7 +881,7 @@ sub globalFunction {
     my $self = shift;
     my $name = shift;
     my $length = shift;
-    
+
     my $builtin = "builtin${name}";
     my $builtinNew = "builtinNew${name}";
     my $prototype = "runtime.global.${name}Prototype";
@@ -874,7 +1001,7 @@ sub newFunction {
     property: @{[ join "\n", $self->propertyMap(@propertyMap) ]},
     $propertyOrder
     value: @{[ $self->nativeFunctionOf($name, $func) ]},
-} 
+}
 _END_
     );
 
@@ -896,7 +1023,7 @@ sub newObject {
     extensible: true,
     property: $propertyMap,
     $propertyOrder,
-} 
+}
 _END_
 }
 
@@ -922,7 +1049,7 @@ sub newPrototypeObject {
     property: $propertyMap,
     $propertyOrder,
     $value
-} 
+}
 _END_
 }
 
@@ -1083,4 +1210,35 @@ Value{
     kind: valueUndefined,
 }
 _END_
+}
+
+sub typedArray {
+    my $self = shift;
+    my $class = shift;
+    my $bytesPerElement = shift;
+    my @got = @_;
+
+    return
+    ".${class}Prototype =",
+    $self->globalPrototype(
+        $class,
+        "_classTypedArray",
+        ".ObjectPrototype",
+        undef,
+        $self->property("length", $self->numberValue("uint32(3)"), "0100"),
+        @got,
+    ),
+    ".$class =",
+    $self->globalFunction(
+        $class,
+        3,
+        $self->functionDeclare(
+            $class,
+        ),
+        $self->numberConstantDeclare(
+            "BYTES_PER_ELEMENT", $bytesPerElement,
+        ),
+        $self->property("name", $self->stringValue($class)),
+    ),
+    ;
 }

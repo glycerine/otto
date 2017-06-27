@@ -110,7 +110,7 @@ func (self *_objectStash) outer() _stash {
 }
 
 func (self *_objectStash) newReference(name string, strict bool, at _at) _reference {
-	return newPropertyReference(self._runtime, self.object, name, strict, at)
+	return newPropertyReference(self._runtime, self.object, name, strict, at, false)
 }
 
 // =========

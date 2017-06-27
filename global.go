@@ -47,6 +47,7 @@ func newContext() *_runtime {
 
 	self.globalStash = self.newObjectStash(nil, nil)
 	self.globalObject = self.globalStash.object
+	self.symbolRegistry = make(map[string]_symbol)
 
 	_newContext(self)
 
@@ -217,5 +218,48 @@ func (runtime *_runtime) newBoundFunction(target *_object, this Value, argumentL
 	prototype := runtime.newObject()
 	self.defineProperty("prototype", toValue_object(prototype), 0100, false)
 	prototype.defineProperty("constructor", toValue_object(self), 0100, false)
+	return self
+}
+
+func (runtime *_runtime) newArrayBuffer(length uint32) *_object {
+	self := runtime.newArrayBufferObject(length)
+	self.prototype = runtime.global.ArrayBufferPrototype
+	return self
+}
+
+func (runtime *_runtime) newArrayBufferOf(bytes []byte) *_object {
+	self := runtime.newArrayBufferObjectOf(bytes)
+	self.prototype = runtime.global.ArrayBufferPrototype
+	return self
+}
+
+func (runtime *_runtime) newTypedArray(length uint32, buffer *_object, byteOffset uint32, byteLength uint32, kind typedArrayKind) *_object {
+	self := runtime.newTypedArrayObject(length, buffer, byteOffset, byteLength, kind)
+	switch kind {
+	case typedArrayKindInt8:
+		self.prototype = runtime.global.Int8ArrayPrototype
+	case typedArrayKindInt16:
+		self.prototype = runtime.global.Int16ArrayPrototype
+	case typedArrayKindInt32:
+		self.prototype = runtime.global.Int32ArrayPrototype
+	case typedArrayKindUint8:
+		self.prototype = runtime.global.Uint8ArrayPrototype
+	case typedArrayKindUint8Clamped:
+		self.prototype = runtime.global.Uint8ClampedArrayPrototype
+	case typedArrayKindUint16:
+		self.prototype = runtime.global.Uint16ArrayPrototype
+	case typedArrayKindUint32:
+		self.prototype = runtime.global.Uint32ArrayPrototype
+	case typedArrayKindFloat32:
+		self.prototype = runtime.global.Float32ArrayPrototype
+	case typedArrayKindFloat64:
+		self.prototype = runtime.global.Float64ArrayPrototype
+	}
+	return self
+}
+
+func (runtime *_runtime) newSymbol(value Value) *_object {
+	self := runtime.newSymbolObject(value)
+	self.prototype = runtime.global.SymbolPrototype
 	return self
 }
